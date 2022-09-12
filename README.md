@@ -27,7 +27,7 @@ Forktalk is a MEAN Stack billing appilication for restraunts and hotel owners wh
 * Included a categorization filter.
 * Edit and remove the menu.
 
-## Find Customer
+## 5. Find Customer
 
 * The consumer is listed with all the information about their visit in this component.
 * Look up customers by name.
