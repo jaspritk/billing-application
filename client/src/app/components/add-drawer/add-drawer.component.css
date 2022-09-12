@@ -1,0 +1,94 @@
+main {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+h2,
+form,
+table {
+    margin-top: 30px;
+}
+
+form {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    gap: 20px;
+    /* background-color: rgb(236, 236, 236);
+     */
+    background-color: var(--bg-shade-3);
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+small {
+    color: red;
+    margin-left: 10px;
+}
+
+/* form button {
+    background-color: var(--color-shade-1);
+    color: var(--color-shade-3);
+    padding: 10px 20px;
+    border: 1px solid var(--color-shade-3);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+} */
+
+.ng-invalid.ng-dirty:not(form),
+.ng-invalid:not(form).form-submitted {
+    border: solid 2px lightcoral;
+}
+
+form td {
+    border: none;
+
+    padding: 3px;
+}
+
+/* form button:hover {
+    background-color: var(--color-shade-3);
+    color: var(--color-shade-1);
+} */
+
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+img {
+    cursor: pointer;
+}
+
+
+.no-record {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+} */
+
+/* .message {
+    background-color: rgb(49, 153, 49);
+    color: white;
+    padding: 10px 20px;
+    width: 30%;
+    border-radius: 2px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+} */
+
+.btn-group {
+    margin-top: 20px;
+}
+
+.btn-group>button {
+    margin-right: 30px;
+}

@@ -1,0 +1,52 @@
+<main>
+  <div class="sidenav">
+    <div>
+      <div class="logo">
+        <h1>FORKTALK</h1>
+        <p>Restraunt</p>
+        <!-- <img src="./../../../assets/images/logo.png" alt="logo" width="150px"> -->
+      </div>
+      <ul>
+        <li [routerLink]="['/dashboard']" routerLinkActive="active">
+
+          <!-- <img src="./../../../assets/images/invoice.png" alt="bill" width="20px"> -->
+          <p>Dashboard</p>
+
+        </li>
+        <li [routerLink]="['/createBill']" routerLinkActive="active">
+
+          <!-- <img src="./../../../assets/images/invoice.png" alt="bill" width="20px"> -->
+          <p>Create Bill</p>
+
+        </li>
+        <li [routerLink]="['/addDrawer']" routerLinkActive="active">
+
+          <!-- <img src="./../../../assets/images/cashier.png" alt="cashier" width="20px"> -->
+          <p>Add Drawer</p>
+
+        </li>
+        <li [routerLink]="['/findCustomer']" routerLinkActive="active">
+
+          <!-- <img src="./../../../assets/images/searching.png" alt="searching" width="20px"> -->
+          <p>Find Customer</p>
+
+        </li>
+        <li [routerLink]="['/menu']" routerLinkActive="active">
+
+          <!-- <img src="./../../../assets/images/menu.png" alt="menu" width="20px"> -->
+          <p>Menu</p>
+
+        </li>
+      </ul>
+    </div>
+
+
+    <img [src]="images[imageIndex]" alt="" class="toogle" width="25px" (click)="toggleTheme()">
+
+
+  </div>
+
+  <div class="display">
+    <router-outlet></router-outlet>
+  </div>
+</main>

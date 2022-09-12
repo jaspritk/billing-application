@@ -1,0 +1,67 @@
+main {
+    display: flex;
+}
+
+.sidenav {
+    position: fixed;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    width: 20%;
+    padding: 30px 20px;
+    background-color: var(--bg-shade-2);
+    color: var(--color-shade-3);
+    height: 100vh;
+}
+
+.sidenav ul {
+    margin-top: 50px;
+}
+
+.sidenav ul li {
+    list-style: none;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 500;
+}
+
+
+/* .sidenav ul li a {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    align-items: center;
+    font-weight: 600;
+    padding: 0 10px;
+} */
+
+.active {
+    background-color: #3678B3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logo h1 {
+    font-size: 25px;
+    color: var(--color-shade-3);
+    letter-spacing: 1px;
+}
+
+.logo p {
+    font-weight: 500;
+    letter-spacing: 7px;
+    color: var(--color-shade-3);
+
+}
+
+.display {
+    padding-left: 20%;
+    width: 100%;
+}
+
+.toogle {
+    position: fixed;
+    bottom: 30px;
+    fill: var(--text-color);
+}

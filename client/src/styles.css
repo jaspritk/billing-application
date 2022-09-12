@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+    --bg-shade-1: hsl(0, 0%, 100%);
+    --bg-shade-2: hsl(198, 17%, 89%);
+    --bg-shade-3: hsla(198, 18%, 89%, 0.4);
+
+    --border-table: rgb(211, 211, 211);
+
+    --option-color: hsl(0, 0%, 13%);
+
+    --text-color: hsl(0, 0%, 27%);
+    --placeholder: hsla(0, 0%, 27%, 0.637);
+
+
+    background-color: var(--bg-shade-1);
+    color: var(--text-color);
+}
+
+body.dark {
+    --bg-shade-1: #37474F;
+    --bg-shade-2: hsl(0, 0%, 13%);
+    --bg-shade-3: hsla(0, 0%, 13%, 0.4);
+
+    --border-table: hsl(0, 0%, 13%);
+
+    --option-color: hsl(0, 0%, 100%);
+
+
+    --text-color: hsl(0, 0%, 85%);
+    --placeholder: hsla(0, 0%, 85%, 0.719);
+
+    background-color: var(--bg-shade-1);
+    color: var(--text-color);
+}
+
+h2,
+h3 {
+    font-weight: 500;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid var(--border-table);
+    text-align: left;
+    padding: 8px;
+
+}
+
+th {
+    font-weight: 600;
+}
+
+form input,
+form select {
+    padding: 8px 10px;
+    background-color: var(--bg-shade-1);
+    border: 1px solid var(--border-table);
+    color: var(--text-color);
+    outline: none;
+    /* width: 40px; */
+}
+
+form option {
+    color: var(--option-color);
+}
+
+::placeholder {
+
+    color: var(--placeholder);
+    opacity: 1;
+
+}
+
+/* Custom Utilities */
+
+.btn-primary {
+    background-color: hsl(208, 54%, 46%);
+    color: white;
+    border: 1px solid #3678B3;
+    border-radius: 5px;
+    outline: none;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: var(--bg-shade-3);
+    color: var(--text-color);
+    border: 1px solid var(--bg-shade-3);
+    border-radius: 5px;
+    outline: none;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.edit {
+    fill: rgb(30, 175, 30);
+    cursor: pointer;
+}
+
+.del {
+    fill: rgb(243, 126, 126);
+    cursor: pointer;
+}
+
+.view {
+    fill: #3678B3;
+    cursor: pointer;
+}
+
+
+.message {
+    display: flex;
+    gap: 20px;
+    background-color: rgb(203, 238, 203);
+    border: 1px solid rgba(49, 153, 49, 0.521);
+    color: rgb(49, 153, 49);
+    padding: 10px 20px;
+    width: 30%;
+    border-radius: 2px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.message svg {
+    width: 20px;
+    fill: rgb(49, 153, 49);
+}

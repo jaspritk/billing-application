@@ -1,0 +1,190 @@
+main {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+h2,
+form {
+    margin-top: 30px;
+}
+
+.bill-details {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bill-details .billto,
+.bill-details .billby {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+img {
+    cursor: pointer;
+}
+
+/* button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+} */
+
+/* button:hover {
+    background-color: var(--color-shade-1);
+    color: var(--color-shade-3);
+} */
+
+/* .saveUpdate button {
+    background-color: var(--color-shade-1);
+    color: var(--color-shade-3);
+    border: 1px solid var(--color-shade-1);
+} */
+
+/* .add_save button {
+    margin-right: 20px;
+    border: 1px solid var(--color-shade-2);
+} */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.controls>* {
+    width: 20%;
+}
+
+/* .controls button {
+    background-color: var(--color-shade-1);
+    color: var(--color-shade-3);
+    border: 1px solid var(--color-shade-1);
+} */
+
+.billform {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--bg-shade-3);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.billform select,
+.billform input {
+    width: 17%;
+}
+
+/* 
+.billform>* {
+    width: 15%;
+} */
+
+.billform button {
+    margin-top: 0;
+}
+
+form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 
+.message {
+    background-color: rgb(49, 153, 49);
+    color: white;
+    padding: 10px 20px;
+    width: 30%;
+    border-radius: 2px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+} */
+
+.final {
+    display: flex;
+    justify-content: space-between;
+}
+
+.final .innerfinal {
+    display: flex;
+    align-items: center;
+}
+
+.final .innerfinal input {
+    width: 250px;
+    margin-left: 10px;
+}
+
+.split {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-shade-3);
+    padding: 20px;
+}
+
+.split input {
+    width: 90px;
+}
+
+.btn-show {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.btn-show button {
+    width: 50%;
+    border: 1px solid var(--color-shade-1);
+    /* background-color: var(--bg-shade-3); */
+}
+
+
+
+.show {
+    background-color: #3678B3;
+    color: white;
+    border: 1px solid #3678B3;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bg-shade-3);
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 5px;
+}
+
+.search input {
+    padding: 10px 10px;
+    width: 75%;
+    background-color: var(--bg-shade-1);
+    border: 1px solid var(--bg-shade-1);
+    color: var(--text-color)
+        /* border: 1px solid rgb(211, 211, 211); */
+}
+
+.search button {
+    width: 20%;
+}
+
+/* .edit {
+    fill: rgb(30, 175, 30);
+    cursor: pointer;
+}
+
+.del {
+    fill: rgb(243, 126, 126);
+    cursor: pointer;
+} */

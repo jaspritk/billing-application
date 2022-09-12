@@ -1,0 +1,198 @@
+<main>
+    <h2>Create Bill</h2>
+    <div class="message" *ngIf="message">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337l-17 17-17-17-64-64-17-17L160 222.1l17 17 47 47L335 175l17-17L385.9 192l-17 17z" />
+        </svg>
+        <p>{{message}}</p>
+    </div>
+
+    <div class="btn-show">
+        <button (click)="showNewForm()" [ngClass]="{'show' : showNew}">New Customer</button>
+        <button (click)="showOldForm()" [ngClass]="{'show' : showOld}">Regular Customer</button>
+    </div>
+
+    <div *ngIf="showNew">
+        <form [formGroup]="customerForm">
+            <div class="bill-details">
+                <div class="billto">
+                    <h3>Bill To,</h3>
+                    <input type="text" placeholder="Customer's Name" formControlName="customerName" required>
+                    <input type="email" name="customerEmail" placeholder="Customer's Email"
+                        formControlName="customerEmail" required>
+                    <input type="text" placeholder="Phone Number" formControlName="customerPhone" required>
+                </div>
+                <div class="billby">
+                    <h3>Bill By, </h3>
+                    <select (change)="getDrawerName($event)" formControlName="drawerName" required>
+                        <option value="name" selected disabled>Drawer's Name</option>
+                        <option *ngFor="let drawer of drawers" value="{{drawer.drawerName}}">{{drawer.drawerName}}
+                        </option>
+                    </select>
+                    <input type="text" placeholder="Phone Number" formControlName="drawerPhone">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="showOld">
+        <div class="search">
+            <input type="text" placeholder="Search by customer phone number" name="searchedPhone" class="search-bar"
+                [(ngModel)]="searchedPhone">
+            <button (click)="onSearch()" class="btn-primary">Search</button>
+        </div>
+        <form [formGroup]="customerForm">
+            <div class="bill-details">
+                <div class="billto">
+                    <h3>Bill To,</h3>
+                    <input type="text" placeholder="Customer's Name" value="{{oldCustomerName}}">
+                    <input type="email" name="customerEmail" value="{{oldCustomerEmail}}"
+                        placeholder="Customer's Email">
+                    <input type="text" placeholder="Phone Number" value="{{oldCustomerPhone}}">
+                </div>
+                <!-- <div class="billby">
+                    <h3>Bill By, </h3>
+                    <select (change)="getDrawerName($event)" formControlName="drawerName" required>
+                        <option value="name" selected disabled>Drawer's Name</option>
+                        <option *ngFor="let drawer of drawers" value="{{drawer.drawerName}}">{{drawer.drawerName}}</option>
+                    </select>
+                    <input type="text" placeholder="Phone Number" formControlName="drawerPhone">
+                </div> -->
+            </div>
+        </form>
+    </div>
+
+    <form [formGroup]="billForm" class="billform">
+
+        <select formControlName="itemName" (change)="onChange()">
+            <option value="" selected disabled>Food Item</option>
+            <option *ngFor="let menu of menus" value="{{menu.itemName}}">{{menu.itemName}}</option>
+        </select>
+
+        <input type="number" min="1" placeholder="Quantity" formControlName="quantity" (change)="onChange()">
+
+        <select formControlName="plateType" (change)="onChange()">
+            <option value="" selected disabled>Plate Type</option>
+            <option value="full-plate">Full Plate</option>
+            <option value="half-plate">Half Plate</option>
+        </select>
+
+        <input type="number" value="{{pricePerPlate}}" placeholder="Price Per Plate" formControlName="pricePerPlate">
+
+        <input type="number" value="{{subtotal}}" placeholder="Subtotal" formControlName="subtotal">
+
+        <div class="saveUpdate">
+            <button *ngIf="!isEdit" (click)="onSubmit()" class="btn-primary" [disabled]="!billForm.valid">Add</button>
+            <button *ngIf="isEdit" (click)="updateItem()" [disabled]="!billForm.valid">Update</button>
+        </div>
+
+    </form>
+
+    <table *ngIf="array.length > 0; else noResults">
+        <tr>
+            <th>#</th>
+            <th>Food Item</th>
+            <th>Quantity</th>
+            <th>Plate Type</th>
+            <th>Price Per Plate</th>
+            <th>Subtotal</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let item of array; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.itemName}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.plateType}}</td>
+            <td>{{item.pricePerPlate}}</td>
+            <td>{{item.subtotal}}</td>
+            <td>
+                <!-- <img (click)="patchItem(item, i)" src="./../../../assets/images/edit.png" alt="edit" width="20px"> -->
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" (click)="patchItem(item, i)" width="20px"
+                    class="edit">
+                    <path
+                        d="M490.3 40.4C512.2 62.27 512.2 97.73 490.3 119.6L460.3 149.7L362.3 51.72L392.4 21.66C414.3-.2135 449.7-.2135 471.6 21.66L490.3 40.4zM172.4 241.7L339.7 74.34L437.7 172.3L270.3 339.6C264.2 345.8 256.7 350.4 248.4 353.2L159.6 382.8C150.1 385.6 141.5 383.4 135 376.1C128.6 370.5 126.4 361 129.2 352.4L158.8 263.6C161.6 255.3 166.2 247.8 172.4 241.7V241.7zM192 63.1C209.7 63.1 224 78.33 224 95.1C224 113.7 209.7 127.1 192 127.1H96C78.33 127.1 64 142.3 64 159.1V416C64 433.7 78.33 448 96 448H352C369.7 448 384 433.7 384 416V319.1C384 302.3 398.3 287.1 416 287.1C433.7 287.1 448 302.3 448 319.1V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V159.1C0 106.1 42.98 63.1 96 63.1H192z" />
+                </svg>
+            </td>
+            <td>
+                <!-- <img (click)="deleteitem(i)" src="./../../../assets/images/bin.png" alt="bin" width="20px"> -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" (click)="deleteitem(i)" width="17px"
+                    class="del">
+                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                        d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z" />
+                </svg>
+            </td>
+        </tr>
+    </table>
+    <ng-template #noResults>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Food Item</th>
+                <th>Quantity</th>
+                <th>Plate Type</th>
+                <th>Price Per Plate</th>
+                <th>Subtotal</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr>
+                <td colspan="8" class="noResult" style="text-align: center;">No items added!</td>
+            </tr>
+        </table>
+    </ng-template>
+
+    <!-- <hr style="margin-top: 30px;"> -->
+
+    <form [formGroup]="customerForm">
+        <div class="final">
+            <div class="innerfinal">
+                <label>Total: </label><input type="number" value="{{total}}" formControlName="total">
+            </div>
+            <div class="innerfinal">
+                <label>GST: </label><input type="text" value="5%" disabled>
+            </div>
+            <div class="innerfinal">
+                <label>Grand Total: </label><input type="text" value="{{grandtotal}}" formControlName="grandtotal">
+            </div>
+        </div>
+    </form>
+
+    <form class="split">
+        <p>Split between &nbsp; </p>
+        <input type="number" min="1" name="noOfPeople" [(ngModel)]="noOfPeople" (ngModelChange)="split()"> &nbsp;
+        <p>persons.&nbsp; </p>
+        <p>Each person has to pay ₹ <strong>{{perHead}}</strong> </p>
+        <!-- <input type="number" value="{{perHead}}" disabled> -->
+    </form>
+
+    <div *ngIf="showNew">
+        <form [formGroup]="customerForm">
+            <div class="controls">
+                <button (click)="postCustomer()" [disabled]="!customerForm.valid && !billForm.valid"
+                    class="btn-primary">Save Customer
+                    Details</button>
+                <button (click)="postBill()" [disabled]="!customerForm.valid && !billForm.valid"
+                    class="btn-primary">Generate Bill</button>
+
+                <button class="btn-primary" (click)="data()">Send Bill as Email</button>
+                <button (click)="resetForm()" class="btn-secondary">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="showOld">
+        <form [formGroup]="customerForm">
+            <div class="controls">
+                <button (click)="postAppendBill()" [disabled]="array.length == 0" class="btn-primary">Append
+                    Bill</button>
+                <button class="btn-primary" (click)="regdata()">Send Bill as Email</button>
+                <button (click)="resetForm()" class="btn-secondary">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+</main>

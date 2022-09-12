@@ -1,0 +1,30 @@
+<main>
+    <h2>Dashboard</h2>
+
+    <div class="uniqueCustomer">
+        <div class="tillDate">
+            <p class="small">Customers</p>
+            <p class="time">till date</p>
+            <p class="number">{{ids?.length}}</p>
+        </div>
+    </div>
+
+
+    <div class="topItems">
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Food Items</th>
+            </tr>
+            <tr *ngFor="let item of topFoodItems; let i=index">
+                <td>#{{i+1}}</td>
+                <td>{{item}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- <div style="display: block; width: 500px">
+        <canvas id="canvas" height="320">{{ chart }}</canvas>
+    </div> -->
+
+</main>

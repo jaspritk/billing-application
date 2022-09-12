@@ -1,0 +1,71 @@
+main {
+    padding: 0 20px;
+    margin-bottom: 50px;
+}
+
+h2,
+form,
+table {
+    margin-top: 30px;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .search {
+    background-color: var(--color-shade-3);
+    color: var(--color-shade-1);
+    padding: 10px 20px;
+    border: 1px solid var(--color-shade-1);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search:hover {
+    background-color: var(--color-shade-1);
+    color: var(--color-shade-3);
+} */
+
+.noResult {
+    text-align: left;
+    margin-top: 50px;
+}
+
+.table-modal {
+    margin-bottom: 50px;
+}
+
+.view-btn {
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+.close-btn {
+    position: fixed;
+    bottom: 50px;
+    right: 155px;
+    /* background-color: var(--bg-);
+    color: var(--color-shade-3);
+    padding: 10px 20px;
+    border: 1px solid var(--color-shade-1);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold; */
+}
+
+.pagination {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+    background: #3678B3;
+}

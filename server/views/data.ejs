@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap');
+
+        main {
+            font-family: 'Poppins', sans-serif;
+            color: hsl(0, 0%, 30%);
+            margin: 0;
+            padding: 20px;
+            background-color: hsla(198, 18%, 89%, 0.4);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        td,
+        th {
+            border: 1px solid rgb(211, 211, 211);
+            text-align: left;
+            padding: 8px;
+
+        }
+
+        th {
+            color: hsl(208, 54%, 46%);
+            font-weight: 600;
+        }
+
+        .restName {
+            color: hsl(208, 54%, 46%);
+            font-size: 18px;
+        }
+
+        .restAddress p,
+        .billto p {
+            margin-block-start: 0em;
+            margin-block-end: 0em;
+        }
+
+        .billto h3 {
+            color: hsl(208, 54%, 46%);
+        }
+
+        .total {
+            background-color: hsl(208, 54%, 46%);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+        }
+
+        .endnote {
+            margin: 30px 0;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="header">
+            <div class="restDetails">
+                <div class="restName">
+                    <h2>Forktalk Restraunt</h2>
+                </div>
+                <div class="restAddress">
+                    <p class="line1">24th Floor, GIFT Two Building</p>
+                    <p class="line2">Block No. 56, Road-5C, Zone-5, GIFT CITY,</p>
+                    <p class="line3">Gandhinagar, Gujarat 382355</p>
+                    <p class="line3">Phone: 7228048034</p>
+                </div>
+            </div>
+            <div class="invoice">
+                Invoice Date: <%=data.date%>
+            </div>
+        </div>
+        <div class="billto">
+            <h3>Bill To,</h3>
+            <p class="custName">
+                <%=data.customer.customerName%>
+            </p>
+            <p class="custEmail">
+                <%=data.customer.customerEmail%>
+            </p>
+            <p class="custPhone">
+                <%=data.customer.customerPhone%>
+            </p>
+        </div>
+        <table>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>PlateType</th>
+                <th>Price Per Plate</th>
+                <th>Subtotal</th>
+            </tr>
+            <% data.bill.forEach(element=> { %>
+                <tr>
+                    <td>
+                        <%= element.itemName %>
+                    </td>
+                    <td>
+                        <%= element.quantity %>
+                    </td>
+                    <td>
+                        <%= element.plateType %>
+                    </td>
+                    <td>
+                        <%= element.pricePerPlate %>
+                    </td>
+                    <td>
+                        <%= element.subtotal %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+        <div class="total">
+            <p>Total Amount: <strong>₹<%=data.customer.total%></strong></p>
+            <p>Grand Total (including 5% GST): <strong>₹<%=data.customer.grandtotal%></strong> </p>
+        </div>
+        <p class="endnote">Thank you for visiting Forktalk Restraunt!</p>
+    </main>
+
+</body>
+
+</html>
